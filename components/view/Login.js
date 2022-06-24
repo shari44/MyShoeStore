@@ -6,10 +6,10 @@ const Login = (props) => {
             <Text style={styles.Title}>ShoeStore</Text>
         </View>
         <View style={styles.Options}>
-            <Button title="Login" onPress={() => {
+            <Button title="Iniciar sesion" onPress={() => {
                 props.navigation.navigate('Main');                
             }} />
-            <Button title="Register" onPress={() => {
+            <Button title="Registrarse" onPress = {() => {
                 props.navigation.navigate('Main');                
             }} />
         </View>
