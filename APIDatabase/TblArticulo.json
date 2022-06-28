@@ -1,0 +1,9 @@
+[
+    {
+        "id_articulo":1,
+        "nombre_art":"Michael Blue",
+        "descripcion":"Zapatos de buena calida",
+        "estado":"1",
+        "id_categoria":1
+    }
+]

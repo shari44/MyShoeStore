@@ -1,11 +1,11 @@
 import { StyleSheet, Text, View, Button } from 'react-native';
 
 const Login = (props) => {
-    return (<View style={styles.container}>
-        <View style={styles.Header}>
-            <Text style={styles.Title}>ShoeStore</Text>
+    return (<View style = {styles.container}>
+        <View style = {styles.Header}>
+            <Text style = {styles.Title}>ShoeStore</Text>
         </View>
-        <View style={styles.Options}>
+        <View style = {styles.Options}>
             <Button title="Iniciar sesion" onPress={() => {
                 props.navigation.navigate('Main');                
             }} />

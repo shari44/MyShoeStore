@@ -1,0 +1,15 @@
+[
+    {
+        "id_existencia":1,
+        "stock":4,
+        "costo":2.200,
+        "precioventa":2.500,
+        "descuento":0.000,
+        "descuentomax":0.000,
+        "id_articulo":1,
+        "id_modelo":1,
+        "id_talla":1,
+        "id_color":1,
+        "id_marca":1
+    }
+]
