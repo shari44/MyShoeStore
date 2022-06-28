@@ -1,12 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View, ActivityIndicator, ScrollView, TextInput, Button } from 'react-native';
 
-
-//Componentes
-//import { CardProductosView } from '../utility/CardProductosView';
-
-//Models
-//import { TblProductos } from '../../model/TblProducto';
+import { TblArticulo } from '../../model/TblArticulo';
+import { CardArticulosView } from '../util/CardAticulosView';
 
 class ArticuloView extends React.Component {
     constructor(props) {
@@ -18,12 +14,12 @@ class ArticuloView extends React.Component {
             selecct: this.props.route.params ?? false
         }
 
-        this.TblProductos = new TblProductos();
+        this.TblArticulo = new TblArticulo();
         this.CargarArticulos();
     }
 
     CargarArticulos = async (param = "") => {
-        const a = await this.TblProductos.Get(param);
+        const a = await this.TblArticulo.Get(param);
 
         this.setState({
             isLoading: false,
@@ -33,22 +29,22 @@ class ArticuloView extends React.Component {
     }
 
     SeleccionArticulo = async (pk, name) => {
-        this.props.route.params.SeleccionProducto(pk, name);
-        this.props.navigation.navigate("Detalle de Compra");
+       // this.props.route.params.SeleccionProducto(pk, name);
+       // this.props.navigation.navigate("Detalle de Compra");
     }
 
     render() {
 
         return (<ScrollView style = {styles.CardStyles}>
             <TextInput style = {styles.text_input}
-            placeholder = 'Buscar productos'
+            placeholder = 'Buscar articulo'
             onChangeText = { val => this.CargarArticulos(val)}></TextInput>
 
             {this.state.isLoading ?
                 <ActivityIndicator /> :
                 this.state.Dataset.map(
-                    c => <CardProductosView key = {c.PKProducto}
-                     data = { c } SeleccionProducto = { this.SeleccionProducto } selecct = {this.state.selecct} />
+                    c => <CardArticulosView key = {c.id_articulo}
+                     data = { c } />
                 )}
         </ScrollView> )
     }
@@ -65,10 +61,10 @@ const styles = StyleSheet.create({
     text_input: {
         height: 50,
         margin: 12,
-        fontSize: 20,
-        padding: 8,
+        fontSize: 18,
+        padding: 4,
         backgroundColor: '#e0e0e0',
-        borderRadius: 10
+        borderRadius: 4
       },
     
   });
