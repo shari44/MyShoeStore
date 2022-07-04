@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, ActivityIndicator, ScrollView, TextInput, Butto
 import { TblArticulo } from '../../model/TblArticulo';
 import { CardArticulosView } from '../util/CardAticulosView';
 
-class ArticuloView extends React.Component {
+class ArticulosView extends React.Component {
     constructor(props) {
         super();
         this.props = props;
@@ -34,6 +34,15 @@ class ArticuloView extends React.Component {
             placeholder = 'Buscar articulo'
             onChangeText = { val => this.CargarArticulos(val)}></TextInput>
 
+            <View style = {{marginLeft: 14, marginRight: 14, marginBottom: 8}}>
+            <Button
+                    title="Nuevo articulo"
+                    color="#f22d44"
+                    onPress={() => {
+                    this.props.navigation.navigate("NewArticulo", { CargarArticulos: this.CargarArticulos }); }}
+                />
+                
+            </View>
             {this.state.isLoading ?
                 <ActivityIndicator /> :
                 this.state.Dataset.map(
@@ -44,7 +53,7 @@ class ArticuloView extends React.Component {
     }
 }
 
-export { ArticuloView }
+export { ArticulosView }
 
 const styles = StyleSheet.create({
     CardStyles:{

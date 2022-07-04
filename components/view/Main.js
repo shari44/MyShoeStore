@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import MainArticuloView from './MainProductosView';
+import MainArticuloView from './MainArticulosView';
 
 const Tab = createBottomTabNavigator();
 //vistas

@@ -1,19 +1,19 @@
-import { StyleSheet, Text, View,TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, Button, View,TouchableOpacity } from 'react-native';
 
-const CardArticulosView = (props) => {
+const CardCategoriasView = (props) => {
 
     return (<View style = {styles.CardStyle}>
-        <Text style = {styles.Title}>Nombre de articulo: {props.data.nombre_art}</Text>
-        <Text style = {styles.Atribute}>Descripcion: {props.data.descripcion}</Text>
+        <Text style = {styles.Title}>Nombre de categoria: {props.data.nombre_cat}</Text>
         <Text style = {styles.Atribute}>Estado: {props.data.estado}</Text>
-        {
-            
-        }
+
+        <Button color = "#f22d44" title="Seleccionar" onPress={() => {
+                props.Seleccted(props.data.id_categoria, props.data.nombre_cat);
+            }} />
 
     </View>);
 }
 
-export { CardArticulosView }
+export { CardCategoriasView }
 
 const styles = StyleSheet.create({
     CardStyle: {
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#f38894"
     }, Title: {
         color: "white",
-        fontSize: 26
+        fontSize: 20
     }, Atribute: {
         color: "white",
         fontSize: 16,

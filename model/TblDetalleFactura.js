@@ -22,6 +22,8 @@ class TblDetalleFactura extends Entity {
     descuento = "0.00";
     total = "2870";
 
+    
+
 }
 
 export { TblDetalleFactura }
