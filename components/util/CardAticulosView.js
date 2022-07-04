@@ -7,7 +7,7 @@ const CardArticulosView = (props) => {
         <Text style = {styles.Atribute}>Descripcion: {props.data.descripcion}</Text>
         <Text style = {styles.Atribute}>Estado: {props.data.estado}</Text>
         {
-
+            
         }
 
     </View>);

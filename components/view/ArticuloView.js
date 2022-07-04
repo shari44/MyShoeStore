@@ -10,8 +10,7 @@ class ArticuloView extends React.Component {
         this.props = props;
         this.state = {
             isLoading: true,
-            Dataset: [],
-            selecct: this.props.route.params ?? false
+            Dataset: []
         }
 
         this.TblArticulo = new TblArticulo();
@@ -28,11 +27,6 @@ class ArticuloView extends React.Component {
 
     }
 
-    SeleccionArticulo = async (pk, name) => {
-       // this.props.route.params.SeleccionProducto(pk, name);
-       // this.props.navigation.navigate("Detalle de Compra");
-    }
-
     render() {
 
         return (<ScrollView style = {styles.CardStyles}>
@@ -44,7 +38,7 @@ class ArticuloView extends React.Component {
                 <ActivityIndicator /> :
                 this.state.Dataset.map(
                     c => <CardArticulosView key = {c.id_articulo}
-                     data = { c } />
+                     data = { c } mostrar = {false} />
                 )}
         </ScrollView> )
     }
