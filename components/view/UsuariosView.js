@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, View, ActivityIndicator, ScrollView, TextInput, Button } from 'react-native';
 
-import { CardCategoriasView } from '../util/CardCategoriasView';
-import { TblCategoria } from '../../model/TblCategoria';
+import { CardUsuariosView } from '../util/CardUsuariosView';
+import { TblUsuario } from '../../model/TblUsuario';
 
-class CategoriasView extends React.Component {
+class UsuariosView extends React.Component {
     constructor(props) {
         super();
         this.props = props;
@@ -13,12 +13,12 @@ class CategoriasView extends React.Component {
             Dataset: []
         }
 
-        this.TblCategoria = new TblCategoria();
-        this.CargarCategoria();
+        this.TblUser = new TblUsuario();
+        this.CargarUsuarios();
     }
 
-    CargarCategoria = async (param = "") => {
-        const a = await this.TblCategoria.Get(param);
+    CargarUsuarios = async (param = "") => {
+        const a = await this.TblUser.Get(param);
 
         this.setState({
             isLoading: false,
@@ -27,30 +27,30 @@ class CategoriasView extends React.Component {
 
     }
 
-    Seleccted = async (id, name) => {
+    UserVendedor = async (id, name) => {
     
-        this.props.route.params.Seleccted(id, name);
-        this.props.navigation.navigate("NewArticulo");
+        this.props.route.params.UserVendedor(id, name);
+        this.props.navigation.navigate("NewVenta");
       }
 
     render() {
 
         return (<ScrollView style = {styles.CardStyles}>
             <TextInput style = {styles.text_input}
-            placeholder = 'Buscar categoria'
-            onChangeText = { val => this.CargarCategoria(val)}></TextInput>
+            placeholder = 'Buscar usuario'
+            onChangeText = { val => this.CargarUsuarios(val)}></TextInput>
 
             {this.state.isLoading ?
                 <ActivityIndicator /> :
                 this.state.Dataset.map(
-                    c => <CardCategoriasView key = {c.id_categoria}
-                     data = { c } Seleccted = { this.Seleccted}/>
+                    c => <CardUsuariosView key = {c.id_usuario}
+                     data = { c } UserVendedor = { this.UserVendedor}/>
                 )}
         </ScrollView> )
     }
 }
 
-export { CategoriasView }
+export { UsuariosView }
 
 const styles = StyleSheet.create({
     CardStyles:{

@@ -1,5 +1,7 @@
 import { Entity } from "../model/core/Entity.js";
 
+import { TblUsuario } from "./TblUsuario.js";
+
 class TblFactura extends Entity {
     
     constructor(props) {
@@ -22,7 +24,22 @@ class TblFactura extends Entity {
     iva = "370";
     subtotal = "2500";
     total = "2870";
-    id_usuario = 1
+    id_usuario = 1;
+
+    TblUsuario = {
+        val: [],
+        get: async ()=> {
+            if (this.id_usuario != "") {
+                const usuario = new TblUsuario();
+
+                return await usuario.GetByProps("id_usuario", this.id_usuario);
+            }else{
+                return this.TblUsuario.val;
+            }            
+        }, set(newValue) {
+            this.TblUsuario.val = newValue;
+        }
+    }
 
 }
 
