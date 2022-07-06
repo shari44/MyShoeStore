@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View,TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View,TouchableOpacity, Button } from 'react-native';
 
 const CardArticulosView = (props) => {
 
@@ -7,7 +7,9 @@ const CardArticulosView = (props) => {
         <Text style = {styles.Atribute}>Descripcion: {props.data.descripcion}</Text>
         <Text style = {styles.Atribute}>Estado: {props.data.estado}</Text>
         {
-            
+            props.mostrar ? <Button color = "#f22d44" title="Seleccionar" onPress={() => {
+                props.AddArticulo(props.data.id_categoria, props.data.nombre_art);
+            }} /> : false
         }
 
     </View>);

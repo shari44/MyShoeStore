@@ -1,4 +1,5 @@
 import { Entity } from "./core/Entity.js";
+import { TblArticulo } from "./TblArticulo";
 
 class TblDetalleFactura extends Entity {
     
@@ -22,6 +23,20 @@ class TblDetalleFactura extends Entity {
     descuento = "0.00";
     total = "2870";
 
+    TblArticulo = {
+        val: [],
+        get: async ()=> {
+            if (this.id_articulo != "") {
+                const art = new TblArticulo();
+
+                return await art.GetByProps("id_articulo", this.id_articulo);
+            }else{
+                return this.TblArticulo.val;
+            }            
+        }, set(newValue) {
+            this.TblArticulo.val = newValue;
+        }
+    }
     
 
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Button, TextInput, ScrollView, Alert } from 'react-native';
 
 import { TblFactura } from '../../model/TblFactura'
+import { CardComp } from '../util/CardComp';
 
 class NewVentasView extends React.Component {
     constructor(props) {
@@ -54,7 +55,7 @@ class NewVentasView extends React.Component {
                 const detalle = this.state.detalle[index];
                 detalle.id_factura = this.Venta.id_factura;
 
-                await detalleventa.Save("id_detalle_factura");
+                await detalle.Save("id_detalle_factura");
             }
 
             return true;
@@ -91,7 +92,7 @@ class NewVentasView extends React.Component {
                 onChangeText={val => this.Venta.fecha_Venta = val} />
 
             <TextInput style={styles.InputStyle}
-                placeholder='Estado'
+                placeholder='Estado de venta'
                 onChangeText={val => this.Venta.estado = val} />
 
             <Button color = "#f22d44" title="Agregar articulo" onPress={async () => {
@@ -103,6 +104,19 @@ class NewVentasView extends React.Component {
             {/** Lista de articulos agregados */}
             <Text style={styles.Title}>Articulos</Text>
             
+            {
+                this.state.detalle.map(
+                    c => <View key = {c.id_articulo} style = {{ padding: 8, borderWidth: 2, borderColor: '#f22d44'}}>
+                        <CardComp key = {c.id_articulo + 1} objeto = {c} />
+                        <Text style = {{fontSize: 16, color: '#000'}}>Cantidad: {c.cantidad}</Text>
+                        <Text style = {{fontSize: 16, color: '#000', marginBottom: 4}}>Total: {c.total}</Text>
+                        <Button color = "#ad1457" title = 'Eliminar' onPress={async () => { 
+                            this.EliminarArticulo(c);
+                        }}></Button>
+                    </View>
+                )
+                }
+
             <Text style={styles.Title}>Datos de venta</Text>
             {/** Datos de venta */}
             <TextInput style={styles.InputStyle}
@@ -131,7 +145,7 @@ class NewVentasView extends React.Component {
                 }
             }} />
             <Separator />
-            <Button color = "#f22d44" title="Cancelar" onPress={() => {
+            <Button color = "#ad1457" title="Cancelar" onPress={() => {
                 this.props.navigation.navigate("VentasView");
             }} />
         </ScrollView>;
@@ -148,7 +162,7 @@ const styles = StyleSheet.create({
     Title: {
         margin: 10,
         fontSize: 26,
-        color: "#ec4b30"
+        color: "#ad1457"
     }, InputStyle: {
         padding: 14,
         flex: 1,

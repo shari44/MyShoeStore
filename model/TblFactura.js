@@ -1,6 +1,7 @@
 import { Entity } from "../model/core/Entity.js";
 
 import { TblUsuario } from "./TblUsuario.js";
+import { TblDetalleFactura } from "./TblDetalleFactura";
 
 class TblFactura extends Entity {
     
@@ -38,6 +39,21 @@ class TblFactura extends Entity {
             }            
         }, set(newValue) {
             this.TblUsuario.val = newValue;
+        }
+    }
+
+    TblDetalleFactura = {
+        val: [],
+        get: async ()=> {
+            if (this.id_factura != "") {
+                const details = new TblDetalleFactura();
+
+                return await details.GetByProps("id_factura", this.id_factura);
+            }else{
+                return this.TblDetalleFactura.val;
+            }            
+        }, set(newValue) {
+            this.TblDetalleFactura.val = newValue;
         }
     }
 

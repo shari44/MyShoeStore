@@ -28,7 +28,16 @@ class VentasView extends React.Component {
     }
 
     Detalle = async (param) => {
+        const usuario = await param.TblUsuario.get();
+        const detalle = await param.TblDetalleFactura.get();
+        
+        this.props.navigation.navigate('DetalleVentaView', {
+            objecto: param,
+            usuario: usuario,
+            detalle: detalle
+        });
 
+        console.log(detalle);
     }
 
     render() {

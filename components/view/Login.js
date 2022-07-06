@@ -23,7 +23,7 @@ const Login = (props) => {
        <Button title = 'Registrarse' onPress={() => {
                 props.navigation.navigate('Main');
             }}
-            color = "#f22d44">
+            color = "#ad1457">
        </Button>
        </View>
         </View>
